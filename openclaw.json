@@ -1,0 +1,12 @@
+{
+  "name": "FounderGraph AI Workflows",
+  "version": "0.1.0",
+  "description": "Modular OpenClaw workflows: digest, marketing, research",
+  "main": "src/fgai_workflows/__init__.py",
+  "scripts": {
+    "test": "pytest"
+  },
+  "keywords": ["openclaw", "ai", "automation"],
+  "author": "FounderGraph AI",
+  "license": "MIT"
+}

@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Venv
+.venv/
+env/
+VENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build/dist
+dist/
+build/
+*.egg-info
+
+# Logs
+logs/
+*.log
+
+# Secrets
+.env
+.secrets/
+
+# Project specific
+monitor/
+memory/
