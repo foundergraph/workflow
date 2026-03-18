@@ -8,5 +8,13 @@
   },
   "keywords": ["openclaw", "ai", "automation"],
   "author": "FounderGraph AI",
-  "license": "MIT"
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "vc_brief",
+      "entry": "src/fgai_workflows/vc_brief/skill.py",
+      "description": "Daily VC briefing synthesized from newsletters",
+      "version": "0.1.0"
+    }
+  ]
 }
