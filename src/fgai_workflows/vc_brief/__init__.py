@@ -60,8 +60,7 @@ class VCBrief:
         return brief
 
     def _fetch_newsletter_messages(self) -> List[Dict]:
-        """Query Gmail for unread messages from tracked newsletter senders within lookback window."""
-        # Reuse Gmail API from email_bridge (avoid reinventing)
+        """Query Gmail for messages with the VC-Newsletters label within lookback window."""
         from google.oauth2 import service_account
         from googleapiclient.discovery import build
 
@@ -72,13 +71,9 @@ class VCBrief:
         delegated = creds.with_subject(self.monitor_email)
         service = build('gmail', 'v1', credentials=delegated, cache_discovery=False)
 
-        # Build query: from:(@newsletter_senders) after:timestamp
+        # Build query: label:VC-Newsletters after:timestamp
         after = (datetime.utcnow() - self.lookback).timestamp()
-        query_parts = [f"after:{int(after)}"]
-        # OR together sender patterns
-        sender_patterns = [f"from:{sender}" for sender in NEWSLETTER_SENDERS.keys()]
-        query_parts.append("(" + " OR ".join(sender_patterns) + ")")
-        query = " ".join(query_parts)
+        query = f"label:VC-Newsletters after:{int(after)}"
 
         results = service.users().messages().list(userId='me', q=query, maxResults=20).execute()
         messages = []
